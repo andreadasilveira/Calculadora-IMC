@@ -1,0 +1,48 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>imc</title>
+</head>
+<body>
+    <h1>Calculadora imc</h1>
+    <style>
+    body {background-color: lightpink;}
+
+    </style>
+    <p>altura: <input type="number" id="altura"></p>
+    <p>peso: <input type="number" id="peso"></p>
+    <button onclick="calculadora()">Calcular</button>
+    <h2 id="resultado"></h2>
+    <img id="imagen" style="display:none; max: width 600px;">
+
+</body>
+<script>
+    function calculadora() {
+        var altura= document.getElementById("altura").value/100;
+        var peso= document.getElementById("peso").value;
+        var imc = peso / (altura * altura);
+        var imagen;
+        var toca;
+         if (imc < 18.5) {
+                toca = "infrapeso";
+                imagen = "infrapeso.webp";
+            } else if (imc < 25) {
+                toca = "peso normal";
+                imagen = "normal.webp";
+            } else if (imc < 30) {
+                toca = "sobrepeso";
+                imagen = "sobrepeso.webp";
+            } else {
+                toca = "obeso";
+                imagen = "obesidad.webp";
+    }
+         document.getElementById("resultado").innerText =
+                "IMC " + imc.toFixed(1) + " es " + toca;
+            var img = document.getElementById("imagen");
+            img.src = imagen;
+            img.style.display = "block";
+    }
+</script>
+</html>
